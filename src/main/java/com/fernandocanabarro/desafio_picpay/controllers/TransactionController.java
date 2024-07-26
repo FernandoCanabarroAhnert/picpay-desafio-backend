@@ -12,18 +12,21 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.fernandocanabarro.desafio_picpay.dtos.TransactionRequestDTO;
 import com.fernandocanabarro.desafio_picpay.dtos.TransactionResponseDTO;
+import com.fernandocanabarro.desafio_picpay.openapi.TransactionControllerOpenAPI;
 import com.fernandocanabarro.desafio_picpay.services.TransactionService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/transfer")
-public class TransactionController {
+@Tag(name = "Transaction", description = "Controller para Transaction")
+public class TransactionController implements TransactionControllerOpenAPI{
 
     @Autowired
     private TransactionService service;
 
-    @PostMapping
+    @PostMapping(produces = "application/json")
     public ResponseEntity<TransactionResponseDTO> createTransfer(@Valid @RequestBody TransactionRequestDTO dto){
         TransactionResponseDTO obj = service.createTransfer(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
