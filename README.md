@@ -118,6 +118,21 @@ mvn clean install
 4.Testar endpoints através do Postman ou da url
 <http://localhost:8080/swagger-ui/index.html#/>
 
+### Usando Docker 🐳
+
+- Clonar repositório git
+- Construir o projeto:
+```
+./mvnw clean package
+```
+- Construir a imagem:
+```
+./mvnw spring-boot:build-image
+```
+- Executar o container:
+```
+docker run --name desafio-picpay -p 8080:8080  -d desafio-picpay:0.0.1-SNAPSHOT
+
 ## API Endpoints 📚
 
 Para fazer as requisições HTTP abaixo, foi utilizada a ferramenta [Postman](https://www.postman.com/):
