@@ -132,6 +132,7 @@ mvn clean install
 - Executar o container:
 ```
 docker run --name desafio-picpay -p 8080:8080  -d desafio-picpay:0.0.1-SNAPSHOT
+```
 
 ## API Endpoints 📚
 
